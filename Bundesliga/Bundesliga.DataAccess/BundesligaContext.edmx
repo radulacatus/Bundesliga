@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Bundesliga.DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BundesligaDataModelStoreContainer">
+          <EntitySet Name="Games" EntityType="Bundesliga.DataModel.Store.Games" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Teams" EntityType="Bundesliga.DataModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Games_Teams_1" Association="Bundesliga.DataModel.Store.FK_Games_Teams_1">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Games_Teams_2" Association="Bundesliga.DataModel.Store.FK_Games_Teams_2">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Team1Id" Type="int" Nullable="false" />
+          <Property Name="Team2Id" Type="int" Nullable="false" />
+          <Property Name="Team1Goals" Type="int" Nullable="false" />
+          <Property Name="Team2Goals" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Stage" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Games_Teams_1">
+          <End Role="Teams" Type="Bundesliga.DataModel.Store.Teams" Multiplicity="1" />
+          <End Role="Games" Type="Bundesliga.DataModel.Store.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Team1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Games_Teams_2">
+          <End Role="Teams" Type="Bundesliga.DataModel.Store.Teams" Multiplicity="1" />
+          <End Role="Games" Type="Bundesliga.DataModel.Store.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Team2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Bundesliga.DataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BundesligaContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Games" EntityType="Bundesliga.DataModel.Game" />
+          <EntitySet Name="Teams" EntityType="Bundesliga.DataModel.Team" />
+          <AssociationSet Name="FK_Games_Teams_1" Association="Bundesliga.DataModel.FK_Games_Teams_1">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Games_Teams_2" Association="Bundesliga.DataModel.FK_Games_Teams_2">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Team1Id" Type="Int32" Nullable="false" />
+          <Property Name="Team2Id" Type="Int32" Nullable="false" />
+          <Property Name="Team1Goals" Type="Int32" Nullable="false" />
+          <Property Name="Team2Goals" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Stage" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Teams" Relationship="Bundesliga.DataModel.FK_Games_Teams_1" FromRole="Games" ToRole="Teams" />
+          <NavigationProperty Name="Teams1" Relationship="Bundesliga.DataModel.FK_Games_Teams_2" FromRole="Games" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Games" Relationship="Bundesliga.DataModel.FK_Games_Teams_1" FromRole="Teams" ToRole="Games" />
+          <NavigationProperty Name="Games1" Relationship="Bundesliga.DataModel.FK_Games_Teams_2" FromRole="Teams" ToRole="Games" />
+        </EntityType>
+        <Association Name="FK_Games_Teams_1">
+          <End Role="Teams" Type="Bundesliga.DataModel.Team" Multiplicity="1" />
+          <End Role="Games" Type="Bundesliga.DataModel.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Team1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Games_Teams_2">
+          <End Role="Teams" Type="Bundesliga.DataModel.Team" Multiplicity="1" />
+          <End Role="Games" Type="Bundesliga.DataModel.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Team2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BundesligaDataModelStoreContainer" CdmEntityContainer="BundesligaContext">
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="Bundesliga.DataModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Team1Id" ColumnName="Team1Id" />
+                <ScalarProperty Name="Team2Id" ColumnName="Team2Id" />
+                <ScalarProperty Name="Team1Goals" ColumnName="Team1Goals" />
+                <ScalarProperty Name="Team2Goals" ColumnName="Team2Goals" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Stage" ColumnName="Stage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="Bundesliga.DataModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
