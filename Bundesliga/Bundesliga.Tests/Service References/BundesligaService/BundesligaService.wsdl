@@ -19,21 +19,5 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IBundesligaService/GetAllTeamsResponse" message="tns:IBundesligaService_GetAllTeams_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IBundesligaService" type="tns:IBundesligaService">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllTeams">
-      <soap:operation soapAction="http://tempuri.org/IBundesligaService/GetAllTeams" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="BundesligaService">
-    <wsdl:port name="BasicHttpBinding_IBundesligaService" binding="tns:BasicHttpBinding_IBundesligaService">
-      <soap:address location="http://localhost:64196/BundesligaService.svc" />
-    </wsdl:port>
-  </wsdl:service>
+  <wsdl:service name="BundesligaService" />
 </wsdl:definitions>

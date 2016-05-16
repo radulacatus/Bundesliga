@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
 
 namespace Bundesliga.Api.Contracts
 {
@@ -13,6 +9,25 @@ namespace Bundesliga.Api.Contracts
     public interface IBundesligaService
     {
         [OperationContract]
-        List<Team> GetAllTeams();
+        [WebGet(
+            ResponseFormat = WebMessageFormat.Json, 
+            BodyStyle = WebMessageBodyStyle.Bare, 
+            UriTemplate = "/teams")]
+        List<Bundesliga.Api.Contracts.Team> GetAllTeams();
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", 
+            ResponseFormat = WebMessageFormat.Json, 
+            RequestFormat=WebMessageFormat.Json,
+            BodyStyle=WebMessageBodyStyle.Bare,
+            UriTemplate = "/game")]
+        Bundesliga.Api.Contracts.Game AddGame(Bundesliga.Api.Contracts.Game game);
+
+        [OperationContract]
+        [WebGet(
+            ResponseFormat = WebMessageFormat.Json, 
+            BodyStyle = WebMessageBodyStyle.Bare, 
+            UriTemplate = "/games")]
+        List<Bundesliga.Api.Contracts.Game> GetAllGames();
     }
 }

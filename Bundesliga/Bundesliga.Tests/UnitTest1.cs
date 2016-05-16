@@ -12,7 +12,10 @@ namespace Bundesliga.Tests
             using (var client = new BundesligaService.BundesligaServiceClient())
             {
                 var teams = client.GetAllTeams();
-                Console.WriteLine(teams.Length);
+                foreach (var team in teams)
+                {
+                    Console.WriteLine(team.TeamName);
+                }
             }
         }
     }

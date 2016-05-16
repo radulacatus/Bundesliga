@@ -17,7 +17,7 @@ namespace Bundesliga.Tests
         /// This test is used to initialize the database.
         /// If you want to cleanup all data and reinsert initial values
         /// uncomment Ignore attribute and run the test
-        [Ignore]
+        //[Ignore]
         public void Run()
         {
             using (var ctx = new BundesligaContext())
