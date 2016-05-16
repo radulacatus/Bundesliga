@@ -1,0 +1,12 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AngularPage.master.cs" Inherits="Bundesliga.Web.AngularPage" %>
+<%@ Register Src="~/AngularScripts.ascx" TagPrefix="uc1" TagName="AngularScripts" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+</asp:Content>
+<asp:Content ID="ScriptsPlaceHolder" ContentPlaceHolderID="ScriptsPlaceHolder" runat="server" >
+    <uc1:AngularScripts runat="server" id="AngularScripts" />
+</asp:Content>

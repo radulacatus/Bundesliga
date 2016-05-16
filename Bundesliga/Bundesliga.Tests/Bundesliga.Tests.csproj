@@ -61,7 +61,8 @@
   <ItemGroup>
     <Compile Include="InsertInitialData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\BundesligaService\Reference.cs">
+    <Compile Include="Service References\BundesligaService\Reference.cs" />
+    <Compile Include="Service References\BundesligaService\Reference1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -77,30 +78,22 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Service References\BundesligaService\Bundesliga.Tests.BundesligaService.Team.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    <None Include="Service References\BundesligaService\Bundesliga.Tests.BundesligaService.Team.datasource" />
     <None Include="Service References\BundesligaService\BundesligaService.wsdl" />
     <None Include="Service References\BundesligaService\BundesligaService.xsd" />
     <None Include="Service References\BundesligaService\BundesligaService1.xsd" />
     <None Include="Service References\BundesligaService\BundesligaService2.xsd" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\Data.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Service References\BundesligaService\Reference.svcmap">
+    <Content Include="Service References\BundesligaService\configuration.svcinfo" />
+    <Content Include="Service References\BundesligaService\configuration91.svcinfo" />
+    <Content Include="Service References\BundesligaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\BundesligaService\configuration.svcinfo" />
-    <None Include="Service References\BundesligaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\BundesligaService\" />
+      <LastGenOutput>Reference1.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

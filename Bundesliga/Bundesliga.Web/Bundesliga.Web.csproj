@@ -126,6 +126,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="AngularScripts.ascx" />
     <Content Include="App\app.js" />
     <Content Include="App\AddGamesController.js" />
     <Content Include="App\data.js" />
@@ -202,6 +203,7 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
+    <Content Include="AngularPage.Master" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular.js" />
@@ -240,6 +242,20 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AngularPage.Master.cs">
+      <DependentUpon>AngularPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AngularPage.Master.designer.cs">
+      <DependentUpon>AngularPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AngularScripts.ascx.cs">
+      <DependentUpon>AngularScripts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AngularScripts.ascx.designer.cs">
+      <DependentUpon>AngularScripts.ascx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="Account\Login.aspx.cs">
