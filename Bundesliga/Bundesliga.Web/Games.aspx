@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Games.aspx.cs" Inherits="Bundesliga.Web.Games" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AngularPage.Master" AutoEventWireup="true" CodeBehind="Games.aspx.cs" Inherits="Bundesliga.Web.Games" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container" ng-app="app">

@@ -10,7 +10,7 @@
 namespace Bundesliga.Web {
     
     
-    public partial class SiteMaster {
+    public partial class AngularPage {
         
         /// <summary>
         /// HeadContent control.
@@ -31,12 +31,12 @@ namespace Bundesliga.Web {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
         
         /// <summary>
-        /// ScriptsPlaceHolder control.
+        /// AngularScripts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ScriptsPlaceHolder;
+        protected global::Bundesliga.Web.AngularScripts AngularScripts;
     }
 }
