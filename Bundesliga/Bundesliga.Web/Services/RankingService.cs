@@ -15,9 +15,10 @@ namespace Bundesliga.Web.Services
         {
             _bundesligaContext = bundesligaContext;
         }
+
         public List<RankingItem> GetStandings()
         {
-            var teamsDictionary = _bundesligaContext.Teams.ToDictionary(k => k.Id, x => new RankingItem{TeamName = x.TeamName});
+            var teamsDictionary = _bundesligaContext.Teams.ToDictionary(k => k.Id, x => new RankingItem { TeamName = x.TeamName });
             var allGames = _bundesligaContext.Games.ToList();
 
             foreach (var game in allGames)

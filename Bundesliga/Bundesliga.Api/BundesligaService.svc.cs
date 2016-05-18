@@ -1,72 +1,54 @@
 ﻿using Bundesliga.Api.Contracts;
-using Bundesliga.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 
 namespace Bundesliga.Api
 {
     public class BundesligaService : IBundesligaService
     {
-        private readonly BundesligaContext _bundesligaContext;
+        private readonly IBundesligaContextService _bundesligaContextService;
 
         public BundesligaService()
         {
-            _bundesligaContext = new BundesligaContext();
+            _bundesligaContextService = new BundesligaContextService(new DataAccess.BundesligaContext());
         }
 
-        public List<Bundesliga.Api.Contracts.Team> GetAllTeams()
+        public List<Team> GetAllTeams()
         {
-            return _bundesligaContext.Teams.Select(x => new Bundesliga.Api.Contracts.Team
-            {
-                Id = x.Id,
-                TeamName = x.TeamName
-            }).ToList();
+            return _bundesligaContextService.GetAllTeams();
         }
 
-
-        public Contracts.Game AddGame(Contracts.Game game)
+        public Game AddGame(Game game)
         {
-            var dbGame = new Bundesliga.DataAccess.Game
+            var gamesInSpecificStage = _bundesligaContextService.GetGamesByStage(game.Stage);
+            if (gamesInSpecificStage.Any(x => x.Team1Id == game.Team1Id || x.Team2Id == game.Team1Id || x.Team1Id == game.Team2Id || x.Team2Id == game.Team2Id))
             {
-                Date = DateTime.Now,
-                Stage = game.Stage,
-                Team1Goals = game.Team1Goals,
-                Team1Id = game.Team1Id,
-                Team2Goals = game.Team2Goals,
-                Team2Id = game.Team2Id
-            };
-
-            if (_bundesligaContext.Games.Any(x =>
-                (x.Team1Id == game.Team1Id || x.Team2Id == game.Team1Id || x.Team1Id == game.Team2Id || x.Team2Id == game.Team2Id) &&
-                x.Stage == game.Stage))
-            {
-                throw new ArgumentException("game");
+                ThrowFault("Cannot insert multiple games for the same team in one stage.");
             }
 
-            var insertedGame = _bundesligaContext.Games.Add(dbGame);
-            _bundesligaContext.SaveChanges();
+            if (game.Team1Id == game.Team2Id)
+            {
+                ThrowFault("Invalid game. A team cannot play itself");
+            }
 
-            game.Id = insertedGame.Id;
-            return game;
+            return _bundesligaContextService.InsertGame(game);
         }
 
-
-        public List<Contracts.Game> GetAllGames()
+        public List<Game> GetAllGames()
         {
-            return _bundesligaContext.Games
-                .Include("Teams,Teams1")
-                .Select(x => new Bundesliga.Api.Contracts.Game
+            return _bundesligaContextService.GetAllGames();
+        }
+
+        private static void ThrowFault(string errorMessage, Exception innerException = null)
+        {
+            var igf = new InvalidGameFault
             {
-                Id = x.Id,
-                Stage = x.Stage,
-                Team1Goals = x.Team1Goals,
-                Team1Id = x.Team1Id,
-                Team1Name = x.Teams.TeamName,
-                Team2Goals = x.Team2Goals,
-                Team2Id = x.Team2Id,
-                Team2Name = x.Teams1.TeamName,
-            }).ToList();
+                ErrorMessage = errorMessage,
+                InnerException = innerException
+            };
+            throw new FaultException<InvalidGameFault>(igf);
         }
     }
 }

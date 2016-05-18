@@ -21,6 +21,7 @@ namespace Bundesliga.Api.Contracts
             RequestFormat=WebMessageFormat.Json,
             BodyStyle=WebMessageBodyStyle.Bare,
             UriTemplate = "/game")]
+        [FaultContract(typeof(InvalidGameFault))]
         Bundesliga.Api.Contracts.Game AddGame(Bundesliga.Api.Contracts.Game game);
 
         [OperationContract]

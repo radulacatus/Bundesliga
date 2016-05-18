@@ -88,8 +88,8 @@
           <Property Name="Team2Goals" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Stage" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Teams" Relationship="Bundesliga.DataModel.FK_Games_Teams_1" FromRole="Games" ToRole="Teams" />
-          <NavigationProperty Name="Teams1" Relationship="Bundesliga.DataModel.FK_Games_Teams_2" FromRole="Games" ToRole="Teams" />
+          <NavigationProperty Name="Team1" Relationship="Bundesliga.DataModel.FK_Games_Teams_1" FromRole="Games" ToRole="Teams" />
+          <NavigationProperty Name="Team2" Relationship="Bundesliga.DataModel.FK_Games_Teams_2" FromRole="Games" ToRole="Teams" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -97,8 +97,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="TeamName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Games" Relationship="Bundesliga.DataModel.FK_Games_Teams_1" FromRole="Teams" ToRole="Games" />
-          <NavigationProperty Name="Games1" Relationship="Bundesliga.DataModel.FK_Games_Teams_2" FromRole="Teams" ToRole="Games" />
+          <NavigationProperty Name="GamesHome" Relationship="Bundesliga.DataModel.FK_Games_Teams_1" FromRole="Teams" ToRole="Games" />
+          <NavigationProperty Name="GamesAway" Relationship="Bundesliga.DataModel.FK_Games_Teams_2" FromRole="Teams" ToRole="Games" />
         </EntityType>
         <Association Name="FK_Games_Teams_1">
           <End Role="Teams" Type="Bundesliga.DataModel.Team" Multiplicity="1" />

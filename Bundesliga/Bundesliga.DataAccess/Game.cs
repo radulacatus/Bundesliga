@@ -22,7 +22,7 @@ namespace Bundesliga.DataAccess
         public System.DateTime Date { get; set; }
         public int Stage { get; set; }
     
-        public virtual Team Teams { get; set; }
-        public virtual Team Teams1 { get; set; }
+        public virtual Team Team1 { get; set; }
+        public virtual Team Team2 { get; set; }
     }
 }

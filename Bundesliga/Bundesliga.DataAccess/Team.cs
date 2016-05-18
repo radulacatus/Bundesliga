@@ -12,19 +12,18 @@ namespace Bundesliga.DataAccess
     using System;
     using System.Collections.Generic;
     
-    [Serializable]
     public partial class Team
     {
         public Team()
         {
-            this.Games = new HashSet<Game>();
-            this.Games1 = new HashSet<Game>();
+            this.GamesHome = new HashSet<Game>();
+            this.GamesAway = new HashSet<Game>();
         }
     
         public int Id { get; set; }
         public string TeamName { get; set; }
     
-        public virtual ICollection<Game> Games { get; set; }
-        public virtual ICollection<Game> Games1 { get; set; }
+        public virtual ICollection<Game> GamesHome { get; set; }
+        public virtual ICollection<Game> GamesAway { get; set; }
     }
 }
