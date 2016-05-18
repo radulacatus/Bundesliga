@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Bundesliga.Web.Services
 {
-    public class RankingService
+    public class RankingService : IRankingService
     {
         private readonly BundesligaContext _bundesligaContext;
 

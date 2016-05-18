@@ -40,6 +40,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -61,42 +64,35 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ApiTests\BundesligaServiceTests.cs" />
     <Compile Include="InsertInitialData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\BundesligaService\Reference.cs" />
-    <Compile Include="Service References\BundesligaService\Reference1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="WebFormsTests\BundesligaServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bundesliga.Api\Bundesliga.Api.csproj">
+      <Project>{77ac1d6f-30be-4e58-b467-8ea1b8f1d159}</Project>
+      <Name>Bundesliga.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bundesliga.DataAccess\Bundesliga.DataAccess.csproj">
       <Project>{43cd9fe6-ed80-4b5d-aac9-52770e495ac3}</Project>
       <Name>Bundesliga.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bundesliga.Web\Bundesliga.Web.csproj">
+      <Project>{991564d3-d77a-4c8b-bf29-687f98a47335}</Project>
+      <Name>Bundesliga.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Service References\BundesligaService\Bundesliga.Tests.BundesligaService.Team.datasource" />
-    <None Include="Service References\BundesligaService\BundesligaService.wsdl" />
-    <None Include="Service References\BundesligaService\BundesligaService.xsd" />
-    <None Include="Service References\BundesligaService\BundesligaService1.xsd" />
-    <None Include="Service References\BundesligaService\BundesligaService2.xsd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Data.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Service References\BundesligaService\configuration.svcinfo" />
-    <Content Include="Service References\BundesligaService\configuration91.svcinfo" />
-    <Content Include="Service References\BundesligaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference1.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

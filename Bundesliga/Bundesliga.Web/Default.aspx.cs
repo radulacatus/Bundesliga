@@ -11,11 +11,10 @@ namespace Bundesliga.Web
 {
     public partial class _Default : Page
     {
-        private RankingService _rankingService = new RankingService(new BundesligaContext());
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            gvStandings.DataSource = _rankingService.GetStandings().OrderByDescending(x => x.Points);
+            var rankingService = Global.Resolve<IRankingService>();
+            gvStandings.DataSource = rankingService.GetStandings().OrderByDescending(x => x.Points);
             gvStandings.DataBind();
         }
     }
