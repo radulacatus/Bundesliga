@@ -10,9 +10,9 @@ namespace Bundesliga.Api
     {
         private readonly IBundesligaContextService _bundesligaContextService;
 
-        public BundesligaService()
+        public BundesligaService(IBundesligaContextService bundesligaContextService)
         {
-            _bundesligaContextService = new BundesligaContextService(new DataAccess.BundesligaContext());
+            _bundesligaContextService = bundesligaContextService;
         }
 
         public List<Team> GetAllTeams()
