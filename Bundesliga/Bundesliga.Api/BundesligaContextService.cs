@@ -8,16 +8,19 @@ namespace Bundesliga.Api
 {
     public class BundesligaContextService : IBundesligaContextService
     {
-        private readonly BundesligaContext _bundesligaContext;
+        private readonly IRepository<Game> _gameRepository;
 
-        public BundesligaContextService(BundesligaContext bundesligaContext)
+        private readonly IRepository<Team> _teamRepository;
+
+        public BundesligaContextService(IRepository<Game> gameRepository, IRepository<Team> teamRepository)
         {
-            _bundesligaContext = bundesligaContext;
+            _gameRepository = gameRepository;
+            _teamRepository = teamRepository;
         }
 
         public List<Contracts.Team> GetAllTeams()
         {
-            return _bundesligaContext.Teams.Select(x => new Bundesliga.Api.Contracts.Team
+            return _teamRepository.All().Select(x => new Bundesliga.Api.Contracts.Team
             {
                 Id = x.Id,
                 TeamName = x.TeamName
@@ -36,22 +39,19 @@ namespace Bundesliga.Api
                 Team2Id = game.Team2Id
             };
 
-            var insertedGame = _bundesligaContext.Games.Add(dbGame);
-            _bundesligaContext.SaveChanges();
-
-            game.Id = insertedGame.Id;
+            var insertedId = _gameRepository.Save(dbGame);
+            game.Id = insertedId;
             return game;
         }
 
         public List<Contracts.Game> GetAllGames()
         {
-            return _bundesligaContext.Games
-                .Select(Convert).ToList();
+            return _gameRepository.All().Select(Convert).ToList();
         }
 
         public List<Contracts.Game> GetGamesByStage(int stage)
         {
-            return _bundesligaContext.Games.Where(x => x.Stage == stage).Select(Convert).ToList();
+            return _gameRepository.All().Where(x => x.Stage == stage).Select(Convert).ToList();
         }
 
         private static Contracts.Game Convert(Game x)

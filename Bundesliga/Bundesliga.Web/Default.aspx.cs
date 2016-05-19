@@ -1,5 +1,6 @@
 ﻿using Bundesliga.DataAccess;
 using Bundesliga.Web.Services;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace Bundesliga.Web
 {
     public partial class _Default : Page
     {
+        [Dependency]
+        public IRankingService RankingService { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            var rankingService = Global.Resolve<IRankingService>();
-            gvStandings.DataSource = rankingService.GetStandings().OrderByDescending(x => x.Points);
+            gvStandings.DataSource = RankingService.GetStandings().OrderByDescending(x => x.Points);
             gvStandings.DataBind();
         }
     }

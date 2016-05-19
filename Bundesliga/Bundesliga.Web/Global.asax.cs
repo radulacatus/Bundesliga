@@ -29,6 +29,8 @@ namespace Bundesliga.Web
             var container = new UnityContainer();
             container.RegisterType<IRankingService, RankingService>();
             container.RegisterType<BundesligaContext, BundesligaContext>();
+            container.RegisterType<IRepository<Team>, TeamRepository>();
+            container.RegisterType<IRepository<Game>, GameRepository>();
             return container;
         }
 
@@ -39,13 +41,21 @@ namespace Bundesliga.Web
 
         void Application_End(object sender, EventArgs e)
         {
-            //  Code that runs on application shutdown
+            if (Container != null)
+            {
+                Container.Dispose();
+            }
         }
 
         void Application_Error(object sender, EventArgs e)
         {
             // Code that runs when an unhandled error occurs
 
+        }
+
+        internal static void BuildUp(object obj)
+        {
+            Container.BuildUp(obj);
         }
     }
 }

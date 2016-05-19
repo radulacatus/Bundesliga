@@ -28,10 +28,11 @@ namespace Bundesliga.DataAccess
             return _set.ToList();
         }
 
-        public void Save(Team entity)
+        public int Save(Team entity)
         {
-            _set.Add(entity);
+            var savedEntity = _set.Add(entity);
             _bundesligaContext.SaveChanges();
+            return savedEntity.Id;
         }
 
         public void Delete(Team entity)

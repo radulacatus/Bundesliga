@@ -10,7 +10,7 @@ namespace Bundesliga.DataAccess
     {
         TEntity Get(int id);
         IEnumerable<TEntity> All();
-        void Save(TEntity entity);
+        int Save(TEntity entity);
         void Delete(TEntity entity);
     }
 }

@@ -12,6 +12,8 @@ namespace Bundesliga.Api
             container.RegisterType<IBundesligaService, BundesligaService>(new HierarchicalLifetimeManager());
             container.RegisterType<IBundesligaContextService, BundesligaContextService>(new HierarchicalLifetimeManager());
             container.RegisterType<BundesligaContext, BundesligaContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<IRepository<DataAccess.Team>, TeamRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IRepository<DataAccess.Game>, GameRepository>(new HierarchicalLifetimeManager());
         }
     }    
 }

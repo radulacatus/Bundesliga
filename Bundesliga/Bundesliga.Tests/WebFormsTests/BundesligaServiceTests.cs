@@ -1,5 +1,6 @@
 ﻿using Bundesliga.Api;
 using Bundesliga.Api.Contracts;
+using Bundesliga.DataAccess;
 using Bundesliga.Web.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
@@ -39,7 +40,7 @@ namespace Bundesliga.Tests.ApiTests
                 new DataAccess.Team{Id = 2}, // 1 d 1 v = 4 p
                 new DataAccess.Team{Id = 3}, // 2 v = 6 p
                 new DataAccess.Team{Id = 4}, // 2 l = 0 p
-            }.AsQueryable();
+            };
 
             var games = new List<DataAccess.Game>
             {
@@ -47,28 +48,15 @@ namespace Bundesliga.Tests.ApiTests
                 new DataAccess.Game { Team1Id = 3, Team2Id = 4, Team1Goals = 1, Team2Goals = 0, Stage = 1 },
                 new DataAccess.Game { Team1Id = 1, Team2Id = 3, Team1Goals = 0, Team2Goals = 1, Stage = 1 },
                 new DataAccess.Game { Team1Id = 2, Team2Id = 4, Team1Goals = 1, Team2Goals = 0, Stage = 1 },
-            }.AsQueryable();
+            };
 
-            var teamsDbSet = SetupMockDbSet<DataAccess.Team>(teams);
-            var gamesDbSet = SetupMockDbSet<DataAccess.Game>(games);
+            var teamsRepository = Substitute.For<IRepository<DataAccess.Team>>();
+            teamsRepository.All().ReturnsForAnyArgs(teams);
+            
+            var gamesRepository = Substitute.For<IRepository<DataAccess.Game>>();
+            gamesRepository.All().ReturnsForAnyArgs(games);
 
-            _mockContext = Substitute.For<DataAccess.BundesligaContext>();
-            _mockContext.Teams.Returns(teamsDbSet);
-            _mockContext.Games.Returns(gamesDbSet);
-
-            _rankingService = new RankingService(_mockContext);
-        }
-
-        private IDbSet<T> SetupMockDbSet<T>(IQueryable<T> data)
-            where T : class
-        {
-            var mockDbSet = Substitute.For<IDbSet<T>, IQueryable<T>>();
-            ((IQueryable<T>)mockDbSet).Provider.Returns(data.Provider);
-            ((IQueryable<T>)mockDbSet).Expression.Returns(data.Expression);
-            ((IQueryable<T>)mockDbSet).ElementType.Returns(data.ElementType);
-            ((IQueryable<T>)mockDbSet).GetEnumerator().Returns(data.GetEnumerator());
-
-            return mockDbSet;
+            _rankingService = new RankingService(gamesRepository, teamsRepository);
         }
     }
 }

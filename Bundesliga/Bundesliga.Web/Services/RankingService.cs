@@ -9,17 +9,20 @@ namespace Bundesliga.Web.Services
 {
     public class RankingService : IRankingService
     {
-        private readonly BundesligaContext _bundesligaContext;
+        private readonly IRepository<Game> _gameRepository;
 
-        public RankingService(BundesligaContext bundesligaContext)
+        private readonly IRepository<Team> _teamRepository;
+
+        public RankingService(IRepository<Game> gameRepository, IRepository<Team> teamRepository)
         {
-            _bundesligaContext = bundesligaContext;
+            _gameRepository = gameRepository;
+            _teamRepository = teamRepository;
         }
 
         public List<RankingItem> GetStandings()
         {
-            var teamsDictionary = _bundesligaContext.Teams.ToDictionary(k => k.Id, x => new RankingItem { TeamName = x.TeamName });
-            var allGames = _bundesligaContext.Games.ToList();
+            var teamsDictionary = _teamRepository.All().ToDictionary(k => k.Id, x => new RankingItem { TeamName = x.TeamName });
+            var allGames = _gameRepository.All();
 
             foreach (var game in allGames)
             {
