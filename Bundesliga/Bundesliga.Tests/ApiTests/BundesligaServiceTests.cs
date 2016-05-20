@@ -2,7 +2,6 @@
 using Bundesliga.Api.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
-using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -16,19 +15,21 @@ namespace Bundesliga.Tests.ApiTests
         public IBundesligaContextService _bundesligaContextService { get; set; }
 
         [TestMethod]
+        [ExpectedException(typeof(FaultException<InvalidGameFault>))]
         public void GivenAddGameIsCalled_WhenTeam1HasDuplicateGame_ThenFaultExceptionIsThrown()
         {
             var game = new Game{ Stage = 1, Team1Id = 1, Team2Id = 2 };
 
-            AssertThrows(() => _bundesligaService.AddGame(game), typeof(FaultException<InvalidGameFault>));
+            _bundesligaService.AddGame(game);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(FaultException<InvalidGameFault>))]
         public void GivenAddGameIsCalled_WhenTeam1SameAsTeam2_ThenFaultExceptionIsThrown()
         {
             var game = new Game { Stage = 1, Team1Id = 1, Team2Id = 1 };
 
-            AssertThrows(() => _bundesligaService.AddGame(game), typeof(FaultException<InvalidGameFault>));
+            _bundesligaService.AddGame(game);
         }
 
         [TestMethod]
@@ -60,20 +61,6 @@ namespace Bundesliga.Tests.ApiTests
             _bundesligaContextService.GetGamesByStage(1).Returns(gamesStage1);
             _bundesligaContextService.GetGamesByStage(2).Returns(gamesStage2);
             _bundesligaService = new BundesligaService(_bundesligaContextService);
-        }
-
-        private static void AssertThrows(Action action, Type exceptionType)
-        {
-            try
-            {
-                action();
-            }
-            catch (Exception ex)
-            {
-                Assert.IsInstanceOfType(ex, exceptionType);
-                return;
-            }
-            Assert.Fail();
         }
     }
 }
