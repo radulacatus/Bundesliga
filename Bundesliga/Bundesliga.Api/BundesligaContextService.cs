@@ -68,5 +68,11 @@ namespace Bundesliga.Api
                 Team2Name = x.Team2.TeamName,
             };
         }
+
+        public void RemoveGame(int id)
+        {
+            var game = _gameRepository.Get(id);
+            _gameRepository.Delete(game);
+        }
     }
 }

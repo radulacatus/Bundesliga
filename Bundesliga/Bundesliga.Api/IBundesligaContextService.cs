@@ -15,5 +15,7 @@ namespace Bundesliga.Api
         List<Game> GetAllGames();
 
         List<Game> GetGamesByStage(int stage);
+
+        void RemoveGame(int id);
     }
 }

@@ -36,6 +36,16 @@ namespace Bundesliga.Api
             return _bundesligaContextService.InsertGame(game);
         }
 
+        public void RemoveGame(string id)
+        {
+            int gameId;
+            if (!int.TryParse(id, out gameId))
+            {
+                ThrowFault("Invalid game Id");
+            }
+            _bundesligaContextService.RemoveGame(gameId);
+        }
+
         public List<Game> GetAllGames()
         {
             return _bundesligaContextService.GetAllGames();
@@ -50,5 +60,7 @@ namespace Bundesliga.Api
             };
             throw new FaultException<InvalidGameFault>(igf);
         }
+
+        public int gameId { get; set; }
     }
 }

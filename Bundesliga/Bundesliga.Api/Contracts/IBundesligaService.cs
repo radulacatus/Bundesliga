@@ -30,5 +30,13 @@ namespace Bundesliga.Api.Contracts
             BodyStyle = WebMessageBodyStyle.Bare, 
             UriTemplate = "/games")]
         List<Bundesliga.Api.Contracts.Game> GetAllGames();
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE",
+            ResponseFormat = WebMessageFormat.Json,
+            RequestFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "/game/{id}")]
+        void RemoveGame(string id);
     }
 }

@@ -1,7 +1,7 @@
 ﻿app.value('playedGames', []);
 
 app.factory('bundesligaService', function ($resource) {
-    var service = $resource('http://localhost:64196/BundesligaService.svc/:apiMethod', {},
+    var service = $resource('http://localhost:64196/BundesligaService.svc/:apiMethod/:id', { id: "@id" },
         {
             getAllTeams: {
                 method: 'GET',
@@ -17,6 +17,11 @@ app.factory('bundesligaService', function ($resource) {
                 method: 'GET',
                 isArray: true,
                 params: { apiMethod: "games" }
+            },
+            deleteGame: {
+                method: 'DELETE',
+                isArray: false,
+                params: { apiMethod: "game" },
             }
         });
 

@@ -198,7 +198,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\toastr.css" />
     <Content Include="Games.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
