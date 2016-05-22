@@ -1,6 +1,4 @@
-﻿app.value('playedGames', []);
-
-app.factory('bundesligaService', function ($resource) {
+﻿app.factory('bundesligaService', function ($resource) {
     var service = $resource('http://localhost:64196/BundesligaService.svc/:apiMethod/:id', { id: "@id" },
         {
             getAllTeams: {
