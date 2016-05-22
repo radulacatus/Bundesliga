@@ -201,6 +201,8 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
     <Content Include="AngularPage.Master" />
+    <Content Include="Scripts\protractor.conf.js" />
+    <Content Include="Scripts\E2E\Games\AddGameSpecs.js" />
     <Content Include="Scripts\karma.conf.js" />
     <Content Include="Scripts\Test\Games\AddGameControllerSpecs.js" />
     <Content Include="Scripts\Vendor\toastr.min.js" />
