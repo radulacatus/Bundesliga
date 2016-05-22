@@ -1,0 +1,38 @@
+{
+  "name": "bundesliga",
+  "version": "0.0.1",
+  "description": "asp.net webforms demo",
+  "main": "app/app.js",
+  "scripts": {
+    "test": "karma start karma.conf.js --reporters kjhtml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/radulacatus/Bundesliga.git"
+  },
+  "keywords": [
+    "webforms",
+    "angularjs"
+  ],
+  "author": "Radu Lacatus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radulacatus/Bundesliga/issues"
+  },
+  "homepage": "https://github.com/radulacatus/Bundesliga#readme",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-messages": "^1.5.5",
+    "angular-mocks": "^1.5.5",
+    "angular-resource": "^1.5.5",
+    "jquery": "^2.2.4",
+    "modernizr": "^3.3.1"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-jasmine-html-reporter": "^0.2.0"
+  }
+}
