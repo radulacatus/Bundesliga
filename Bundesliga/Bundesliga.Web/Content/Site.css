@@ -732,3 +732,13 @@ tr.pager td {
         }
 }
 /* END: Mobile Styles */
+
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+
+.submitted .form-control.ng-invalid {
+    border-color: #e74c3c;
+}
