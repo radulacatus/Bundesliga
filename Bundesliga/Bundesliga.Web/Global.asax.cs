@@ -22,6 +22,12 @@ namespace Bundesliga.Web
             Container = CreateContainer();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
+            RegisterRoutes(RouteTable.Routes);
+        }
+
+        void RegisterRoutes(RouteCollection routes)
+        {
+            routes.MapPageRoute("Games", "Games", "~/Games.aspx");
         }
 
         private IUnityContainer CreateContainer()
