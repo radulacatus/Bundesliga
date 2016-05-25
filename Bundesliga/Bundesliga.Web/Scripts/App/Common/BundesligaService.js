@@ -1,5 +1,5 @@
-﻿angular.module('app').factory('bundesligaService', function ($resource) {
-    var service = $resource('http://localhost:64196/BundesligaService.svc/:apiMethod/:id', { id: "@id" },
+﻿angular.module('app').factory('bundesligaService', function ($resource, globalConfig) {
+    var service = $resource(globalConfig.ApiBaseUrl + '/:apiMethod/:id', { id: "@id" },
         {
             getAllTeams: {
                 method: 'GET',

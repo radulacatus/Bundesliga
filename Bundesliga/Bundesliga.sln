@@ -22,23 +22,32 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Dev|Any CPU = Dev|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{991564D3-D77A-4C8B-BF29-687F98A47335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{991564D3-D77A-4C8B-BF29-687F98A47335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{991564D3-D77A-4C8B-BF29-687F98A47335}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{991564D3-D77A-4C8B-BF29-687F98A47335}.Dev|Any CPU.Build.0 = Dev|Any CPU
 		{991564D3-D77A-4C8B-BF29-687F98A47335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{991564D3-D77A-4C8B-BF29-687F98A47335}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43CD9FE6-ED80-4B5D-AAC9-52770E495AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{43CD9FE6-ED80-4B5D-AAC9-52770E495AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CD9FE6-ED80-4B5D-AAC9-52770E495AC3}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{43CD9FE6-ED80-4B5D-AAC9-52770E495AC3}.Dev|Any CPU.Build.0 = Dev|Any CPU
 		{43CD9FE6-ED80-4B5D-AAC9-52770E495AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43CD9FE6-ED80-4B5D-AAC9-52770E495AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B65944F0-EC9A-4FC7-95E0-3DA343F4287A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B65944F0-EC9A-4FC7-95E0-3DA343F4287A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B65944F0-EC9A-4FC7-95E0-3DA343F4287A}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{B65944F0-EC9A-4FC7-95E0-3DA343F4287A}.Dev|Any CPU.Build.0 = Dev|Any CPU
 		{B65944F0-EC9A-4FC7-95E0-3DA343F4287A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B65944F0-EC9A-4FC7-95E0-3DA343F4287A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77AC1D6F-30BE-4E58-B467-8EA1B8F1D159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77AC1D6F-30BE-4E58-B467-8EA1B8F1D159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77AC1D6F-30BE-4E58-B467-8EA1B8F1D159}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{77AC1D6F-30BE-4E58-B467-8EA1B8F1D159}.Dev|Any CPU.Build.0 = Dev|Any CPU
 		{77AC1D6F-30BE-4E58-B467-8EA1B8F1D159}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77AC1D6F-30BE-4E58-B467-8EA1B8F1D159}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

@@ -27,7 +27,6 @@
     <meta name="viewport" content="width=device-width" />
 
     <script src="Scripts/node_modules/jquery/dist/jquery.min.js"></script>
-
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
 <body>
