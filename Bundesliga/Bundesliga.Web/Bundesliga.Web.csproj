@@ -324,6 +324,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\package.json" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
