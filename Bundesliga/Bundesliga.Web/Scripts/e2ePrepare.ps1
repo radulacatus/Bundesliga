@@ -1,0 +1,1 @@
+﻿webdriver-manager start --standalone
