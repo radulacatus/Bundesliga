@@ -4,7 +4,7 @@ var removeBtns = $$('[ng-click="gamesListCtrl.remove(game)"]');
 
 describe('Games Page', function () {
     it('should add a game', function () {
-        browser.get('http://localhost:55046/Games');
+        browser.get('http://localhost:5001/Games');
 
         element(by.model('addGameCtrl.stage')).sendKeys('8');
         element(by.model('addGameCtrl.team1')).$('[value="2"]').click();
