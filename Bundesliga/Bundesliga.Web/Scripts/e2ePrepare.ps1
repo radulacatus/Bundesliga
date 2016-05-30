@@ -1,1 +1,1 @@
-﻿webdriver-manager start --standalone
+﻿C:\Users\radul\AppData\Roaming\npm\node_modules\protractor\bin\webdriver-manager start --standalone
