@@ -1,1 +1,1 @@
-﻿node C:\Users\radul\AppData\Roaming\npm\node_modules\protractor\bin\webdriver-manager start --standalone
+﻿Start-Job -ScriptBlock {node C:\Users\radul\AppData\Roaming\npm\node_modules\protractor\bin\webdriver-manager start --standalone}
