@@ -22,7 +22,10 @@ namespace Bundesliga.Tests.ApiTests
         [TestMethod]
         public void GivenGetStandingsIsCalled_WhenGamesArePresent_ThenPointsAreAddedCorrectly()
         {
+
             var rankingItems = _rankingService.GetStandings().OrderByDescending(x => x.Points).ToArray();
+
+            Assert.Fail();
 
             Assert.AreEqual(rankingItems.Length, 4);
             Assert.AreEqual(rankingItems[0].Points, 6);
