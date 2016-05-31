@@ -25,8 +25,6 @@ namespace Bundesliga.Tests.ApiTests
 
             var rankingItems = _rankingService.GetStandings().OrderByDescending(x => x.Points).ToArray();
 
-            Assert.Fail();
-
             Assert.AreEqual(rankingItems.Length, 4);
             Assert.AreEqual(rankingItems[0].Points, 6);
             Assert.AreEqual(rankingItems[1].Points, 4);
